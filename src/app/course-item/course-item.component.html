@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="course-details">
+
+        <div class="course-meta-data">
+            <h3 class="title">
+                {{course.title}}
+            </h3>
+            <div class="right-align">
+                <div class="duration">
+                    {{course.duration}}
+                </div>
+                <div class="date">
+                    {{course.createdDate}}
+                </div>
+            </div>
+        </div>
+        <div class="desc">
+            {{course.description}}
+        </div>
+    </div>
+    <div class="actions">
+
+        <button (click)="editClickHanlder()">Edit</button>
+        <button (click)="deleteClickHandler()">Delete</button>
+    </div>
+</div>

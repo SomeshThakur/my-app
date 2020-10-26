@@ -3,22 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { CoursesComponent } from './courses/courses.component';
+import { CourseItemComponent } from './course-item/course-item.component';
+import { SharedModule } from './shared/shared.module';
+import { BreadcrumComponent } from './breadcrum/breadcrum.component';
+import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    CoursesComponent
+    CoursesComponent,
+    CourseItemComponent,
+    BreadcrumComponent,
+    SearchComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

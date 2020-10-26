@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  padding: 10px;
+  background-color: #414453;
+  color: white;
+  justify-content: space-between;
+
+  .logo {
+    align-self: flex-start;
+  }
+
+  .actions {
+    display: grid;
+    align-self: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}
