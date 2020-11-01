@@ -11,23 +11,12 @@ import {
 } from '@angular/core';
 import { Course } from '../shared/course/course';
 
-// TODO: Remove all console.logs
-
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
 })
-export class CoursesComponent
-  implements
-    OnChanges,
-    OnInit,
-    DoCheck,
-    AfterContentInit,
-    AfterContentChecked,
-    AfterViewInit,
-    AfterViewChecked,
-    OnDestroy {
+export class CoursesComponent implements OnInit {
   courses: Course[];
 
   constructor() {
@@ -35,7 +24,6 @@ export class CoursesComponent
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.courses = [
       {
         id: '1',
@@ -80,37 +68,10 @@ export class CoursesComponent
     ];
   }
 
-  ngOnChanges() {
-    console.log(`ngOnChanges`);
-  }
-
-  ngDoCheck() {
-    console.log('ngDoCheck');
-  }
-
-  ngAfterContentInit() {
-    console.log('ngAfterContentInit');
-  }
-
-  ngAfterContentChecked() {
-    console.log('ngAfterContentChecked');
-  }
-
-  ngAfterViewInit() {
-    console.log('ngAfterViewInit');
-  }
-
-  ngAfterViewChecked() {
-    console.log('ngAfterViewChecked');
-  }
-
-  ngOnDestroy() {
-    console.log('ngOnDestroy');
-  }
-
   loadMore() {
     console.log('Load More');
   }
+
   onCourseDelete(id) {
     console.log('Delete click at course id : ', id);
   }

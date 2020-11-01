@@ -21,4 +21,21 @@ describe('CoursesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have intial courses array', () => {
+    component.ngOnInit();
+    expect(component.courses).toBeTruthy();
+  });
+
+  it('should log the dummy implementation of load more', () => {
+    const spy = spyOn(console, 'log');
+    component.loadMore();
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should log the dummy implementation of delete course', () => {
+    const spy = spyOn(console, 'log');
+    component.onCourseDelete('123');
+    expect(spy).toHaveBeenCalled();
+  });
 });

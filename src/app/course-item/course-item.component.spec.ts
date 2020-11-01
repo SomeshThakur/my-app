@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Course } from '../shared/course/course';
 
 import { CourseItemComponent } from './course-item.component';
 
@@ -20,5 +21,30 @@ describe('CourseItemComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit the delete event', () => {
+    const course: Course = {
+      id: '123',
+      title: '',
+      createdDate: '',
+      description: '',
+      duration: '',
+    };
+    // Input value
+    component.course = course;
+
+    component.delete.subscribe((id) => {
+      // Output value test
+      expect(id).toEqual(course.id);
+    });
+
+    component.deleteClickHandler();
+  });
+
+  it('should log the dummy implementation of edit course', () => {
+    const spy = spyOn(console, 'log');
+    component.editClickHanlder();
+    expect(spy).toHaveBeenCalled();
   });
 });

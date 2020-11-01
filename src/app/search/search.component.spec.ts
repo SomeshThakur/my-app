@@ -21,4 +21,10 @@ describe('SearchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should log the dummy implementation of search', () => {
+    const spy = spyOn(console, 'log');
+    component.findCourse();
+    expect(spy).toHaveBeenCalled();
+  });
 });
