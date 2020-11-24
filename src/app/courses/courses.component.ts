@@ -8,6 +8,7 @@ import { Course } from '../shared/course/course';
 })
 export class CoursesComponent implements OnInit {
   courses: Course[];
+  orderBy = false;
 
   constructor() {
     console.log('Constructor');
@@ -22,7 +23,7 @@ export class CoursesComponent implements OnInit {
       {
         id: '1',
         title: 'Course title',
-        duration: 'duration',
+        duration: '45',
         createdDate: freshCourse.toDateString(),
         topRated: true,
         description:
@@ -31,7 +32,7 @@ export class CoursesComponent implements OnInit {
       {
         id: '2',
         title: 'Course title',
-        duration: 'duration',
+        duration: '60',
         createdDate: new Date(2020, 0, 10).toDateString(),
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultricies facilisis lorem, pulvinar sollicitudin ligula aliquam non. Pellentesque ante ligula, mollis et tellus in, accumsan faucibus mi. Integer et neque non lorem bibendum tempus et sed lectus. Ut dapibus congue odio at placerat. Ut tristique fringilla eros, fermentum faucibus est maximus eget. Fusce et porttitor eros. Mauris ornare sagittis pretium. Vivamus egestas nisi eget nulla ultrices, et rutrum arcu venenatis.',
@@ -39,7 +40,7 @@ export class CoursesComponent implements OnInit {
       {
         id: '3',
         title: 'Course title',
-        duration: 'duration',
+        duration: '120',
         createdDate: upComingCourse.toDateString(),
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultricies facilisis lorem, pulvinar sollicitudin ligula aliquam non. Pellentesque ante ligula, mollis et tellus in, accumsan faucibus mi. Integer et neque non lorem bibendum tempus et sed lectus. Ut dapibus congue odio at placerat. Ut tristique fringilla eros, fermentum faucibus est maximus eget. Fusce et porttitor eros. Mauris ornare sagittis pretium. Vivamus egestas nisi eget nulla ultrices, et rutrum arcu venenatis.',
@@ -47,7 +48,7 @@ export class CoursesComponent implements OnInit {
       {
         id: '4',
         title: 'Course title',
-        duration: 'duration',
+        duration: '150',
         createdDate: new Date(2019, 12, 30).toDateString(),
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultricies facilisis lorem, pulvinar sollicitudin ligula aliquam non. Pellentesque ante ligula, mollis et tellus in, accumsan faucibus mi. Integer et neque non lorem bibendum tempus et sed lectus. Ut dapibus congue odio at placerat. Ut tristique fringilla eros, fermentum faucibus est maximus eget. Fusce et porttitor eros. Mauris ornare sagittis pretium. Vivamus egestas nisi eget nulla ultrices, et rutrum arcu venenatis.',
@@ -55,7 +56,7 @@ export class CoursesComponent implements OnInit {
       {
         id: '5',
         title: 'Course title',
-        duration: 'duration',
+        duration: '20',
         createdDate: new Date(2020, 4, 25).toDateString(),
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultricies facilisis lorem, pulvinar sollicitudin ligula aliquam non. Pellentesque ante ligula, mollis et tellus in, accumsan faucibus mi. Integer et neque non lorem bibendum tempus et sed lectus. Ut dapibus congue odio at placerat. Ut tristique fringilla eros, fermentum faucibus est maximus eget. Fusce et porttitor eros. Mauris ornare sagittis pretium. Vivamus egestas nisi eget nulla ultrices, et rutrum arcu venenatis.',
@@ -69,5 +70,8 @@ export class CoursesComponent implements OnInit {
 
   onCourseDelete(id) {
     console.log('Delete click at course id : ', id);
+  }
+  toggleOrderBy() {
+    this.orderBy = !this.orderBy;
   }
 }

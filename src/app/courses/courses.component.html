@@ -1,12 +1,15 @@
 <app-search></app-search>
 <div class="add-course">
   <button>Add Course</button>
+  <button (click)="toggleOrderBy()">
+    Order By Creation date: {{ orderBy }}
+  </button>
 </div>
 <div class="courses-wrapper">
   <div *ngIf="!courses?.length" style="margin: 20px">
     No Courses avaiable, Feel free add a new one.
   </div>
-  <div *ngFor="let course of courses">
+  <div *ngFor="let course of orderBy ? (courses | orderBy) : courses">
     <app-course-item
       [course]="course"
       (delete)="onCourseDelete($event)"

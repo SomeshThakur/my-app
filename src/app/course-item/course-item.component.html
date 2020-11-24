@@ -6,10 +6,10 @@
     <img src="assets/star.png" class="topRated" *ngIf="course?.topRated" />
     <div class="right-align">
       <div class="duration">
-        {{ course?.duration }}
+        {{ course?.duration | duration }}
       </div>
       <div class="date">
-        {{ course?.createdDate }}
+        {{ course?.createdDate | date }}
       </div>
     </div>
   </div>
