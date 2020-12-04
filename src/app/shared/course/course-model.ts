@@ -6,4 +6,5 @@ export class CourseModel implements Course {
   createdDate: string;
   duration: string;
   description: string;
+  topRated: boolean;
 }

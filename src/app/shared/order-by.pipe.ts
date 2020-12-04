@@ -7,7 +7,9 @@ import { Course } from './course/course';
 export class OrderByPipe implements PipeTransform {
   transform(courses: Course[]) {
     return [...courses].sort((a, b) => {
-      return a.createdDate.localeCompare(b.createdDate);
+      const aTime = new Date(a.createdDate).getTime();
+      const bTime = new Date(b.createdDate).getTime();
+      return aTime - bTime;
     });
   }
 }
