@@ -1,4 +1,4 @@
-<app-search></app-search>
+<app-search (inputChanged)="findCourse($event)"></app-search>
 <div class="add-course">
   <button>Add Course</button>
   <button (click)="toggleOrderBy()">
@@ -9,7 +9,17 @@
   <div *ngIf="!courses?.length" style="margin: 20px">
     No Courses avaiable, Feel free add a new one.
   </div>
-  <div *ngFor="let course of orderBy ? (courses | orderBy) : courses">
+  <div
+    *ngFor="
+      let course of orderBy && filterCourseStr?.length > 0
+        ? (courses | filter: filterCourseStr | orderBy)
+        : orderBy
+        ? (courses | orderBy)
+        : filterCourseStr?.length > 0
+        ? (courses | filter: filterCourseStr)
+        : courses
+    "
+  >
     <app-course-item
       [course]="course"
       (delete)="onCourseDelete($event)"

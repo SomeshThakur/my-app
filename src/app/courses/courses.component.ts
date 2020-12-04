@@ -9,6 +9,7 @@ import { Course } from '../shared/course/course';
 export class CoursesComponent implements OnInit {
   courses: Course[];
   orderBy = false;
+  filterCourseStr: string;
 
   constructor() {
     console.log('Constructor');
@@ -22,7 +23,7 @@ export class CoursesComponent implements OnInit {
     this.courses = [
       {
         id: '1',
-        title: 'Course title',
+        title: 'Angular Course',
         duration: '45',
         createdDate: freshCourse.toDateString(),
         topRated: true,
@@ -31,7 +32,7 @@ export class CoursesComponent implements OnInit {
       },
       {
         id: '2',
-        title: 'Course title',
+        title: 'React Course',
         duration: '60',
         createdDate: new Date(2020, 0, 10).toDateString(),
         description:
@@ -39,7 +40,7 @@ export class CoursesComponent implements OnInit {
       },
       {
         id: '3',
-        title: 'Course title',
+        title: 'Android Course',
         duration: '120',
         createdDate: upComingCourse.toDateString(),
         description:
@@ -47,7 +48,7 @@ export class CoursesComponent implements OnInit {
       },
       {
         id: '4',
-        title: 'Course title',
+        title: 'IOS Course',
         duration: '150',
         createdDate: new Date(2019, 12, 30).toDateString(),
         description:
@@ -55,7 +56,7 @@ export class CoursesComponent implements OnInit {
       },
       {
         id: '5',
-        title: 'Course title',
+        title: 'Web Basics Course',
         duration: '20',
         createdDate: new Date(2020, 4, 25).toDateString(),
         description:
@@ -73,5 +74,8 @@ export class CoursesComponent implements OnInit {
   }
   toggleOrderBy() {
     this.orderBy = !this.orderBy;
+  }
+  findCourse(inputStr: string) {
+    this.filterCourseStr = inputStr;
   }
 }
