@@ -7,6 +7,7 @@ import { CreationDateDirective } from './creation-date.directive';
 import { DurationPipe } from './duration.pipe';
 import { OrderByPipe } from './order-by.pipe';
 import { FilterPipe } from './filter.pipe';
+import { LoginComponent } from './login/login.component';
 
 const components = [
   HeaderComponent,
@@ -15,7 +16,8 @@ const components = [
   CreationDateDirective,
   DurationPipe,
   OrderByPipe,
-  FilterPipe
+  FilterPipe,
+  LoginComponent,
 ];
 
 @NgModule({

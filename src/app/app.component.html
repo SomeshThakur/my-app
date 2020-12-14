@@ -1,6 +1,7 @@
 <app-header></app-header>
-<app-breadcrum></app-breadcrum>
-
-<router-outlet></router-outlet>
-
+<div *ngIf="isAuthenticated">
+  <app-breadcrum></app-breadcrum>
+  <router-outlet></router-outlet>
+</div>
+<app-login *ngIf="!isAuthenticated"></app-login>
 <app-footer></app-footer>

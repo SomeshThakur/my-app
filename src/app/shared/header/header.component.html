@@ -1,11 +1,6 @@
 <div class="container">
-    <app-logo class="logo"></app-logo>
-    <div class="actions">
-        <div class="user-login">
-            <span>User Login</span>
-        </div>
-        <button>
-            Log off
-        </button>
-    </div>
+  <app-logo class="logo"></app-logo>
+  <div class="actions">
+    <button (click)="logout()" *ngIf="isAuthenticated">Log off</button>
+  </div>
 </div>
