@@ -10,7 +10,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
-  login(arr) {
+  login(arr): void {
     console.log(arr);
     // TODO: Add login details
     this.authService.login('', '');
