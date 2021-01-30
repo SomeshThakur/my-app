@@ -1,4 +1,11 @@
-import { Injectable } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Injectable,
+  Input,
+  Optional,
+} from '@angular/core';
 import { Course } from '../shared/course/course';
 
 @Injectable({
@@ -7,6 +14,9 @@ import { Course } from '../shared/course/course';
 export class CourseService {
   courses: Course[];
   id: number;
+
+  private isAddCourse: boolean = false;
+
   constructor() {
     const freshCourse = new Date();
     freshCourse.setDate(freshCourse.getDate() - 10);
@@ -89,5 +99,13 @@ export class CourseService {
     if (index > -1) {
       this.courses.splice(index, 1);
     }
+  }
+
+  isAddCourseView() {
+    return this.isAddCourse;
+  }
+
+  setCourseView(status: boolean) {
+    this.isAddCourse = status;
   }
 }

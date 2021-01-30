@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { BreadcrumComponent } from './breadcrum/breadcrum.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     CourseItemComponent,
     BreadcrumComponent,
     SearchComponent,
+    AddCourseComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, FormsModule],
   providers: [],

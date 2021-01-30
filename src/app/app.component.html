@@ -1,7 +1,8 @@
 <app-header></app-header>
-<div *ngIf="isAuthenticated">
+<div *ngIf="isAuthenticated && !isAddCourse">
   <app-breadcrum></app-breadcrum>
-  <router-outlet></router-outlet>
+  <app-courses (isAddCourseView)="onAddCourseView($event)"></app-courses>
 </div>
 <app-login *ngIf="!isAuthenticated"></app-login>
+<app-add-course *ngIf="isAddCourse" (cancel)="onAddCourseViewCancel($event)"></app-add-course>
 <app-footer></app-footer>

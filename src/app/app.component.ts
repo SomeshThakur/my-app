@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { CourseService } from './services/course.service';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,21 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
   title = 'my-app';
   isAuthenticated = false;
-  constructor(private authService: AuthService) {}
+  isAddCourse;
+
+  constructor(
+    private authService: AuthService,
+    private courseService: CourseService
+  ) {}
+
   ngOnInit() {
     this.isAuthenticated = this.authService.isAuthenticated();
+  }
+
+  onAddCourseView(event) {
+    this.isAddCourse = event;
+  }
+  onAddCourseViewCancel(event) {
+    this.isAddCourse = event;
   }
 }

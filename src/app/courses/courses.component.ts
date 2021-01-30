@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { CourseService } from '../services/course.service';
 import { Course } from '../shared/course/course';
 
@@ -11,6 +17,7 @@ export class CoursesComponent implements OnInit {
   courses: Course[];
   orderBy = false;
   filterCourseStr: string;
+  @Output() isAddCourseView = new EventEmitter<boolean>();
 
   constructor(private courseService: CourseService) {}
 
@@ -35,5 +42,9 @@ export class CoursesComponent implements OnInit {
   }
   findCourse(inputStr: string) {
     this.filterCourseStr = inputStr;
+  }
+
+  onAddCourse() {
+    this.isAddCourseView.emit(true);
   }
 }

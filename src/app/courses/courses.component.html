@@ -1,6 +1,6 @@
 <app-search (inputChanged)="findCourse($event)"></app-search>
 <div class="add-course">
-  <button>Add Course</button>
+  <button (click)="onAddCourse()">Add Course</button>
   <button (click)="toggleOrderBy()">
     Order By Creation date: {{ orderBy }}
   </button>

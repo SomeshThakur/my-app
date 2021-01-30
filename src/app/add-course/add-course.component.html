@@ -1,0 +1,18 @@
+<div class="container">
+  <h3>New course</h3>
+  <div class="add-course-form">
+    <label for="title">Title</label>
+    <input type="text" id="title" [(ngModel)]="title" required />
+    <label for="desc">Description</label>
+    <input type="text" id="desc" [(ngModel)]="desc" required />
+    <label for="duration">Duration</label>
+    <input type="number" id="duration" [(ngModel)]="duration" required />
+    <span>{{duration|duration}}</span>
+    <label for="date">Date</label>
+    <input type="date" id="date" [(ngModel)]="date" required />
+    <label for="authors">Authors</label>
+    <input type="text" id="authors" [(ngModel)]="authors" required />
+    <button type="submit" (click)="onCancel()">Cancel</button>
+    <button type="submit" (click)="add($event)">Save</button>
+  </div>
+</div>
