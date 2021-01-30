@@ -6,6 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { Course } from '../shared/course/course';
 
 @Component({
@@ -18,7 +19,7 @@ export class CourseItemComponent implements OnInit {
   @Input() course: Course;
   @Output() delete = new EventEmitter<string>();
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -27,6 +28,6 @@ export class CourseItemComponent implements OnInit {
   }
 
   editClickHanlder() {
-    console.log('edit');
+    this.router.navigate(['courses/', this.course.id]);
   }
 }

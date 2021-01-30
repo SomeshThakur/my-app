@@ -15,8 +15,6 @@ export class CourseService {
   courses: Course[];
   id: number;
 
-  private isAddCourse: boolean = false;
-
   constructor() {
     const freshCourse = new Date();
     freshCourse.setDate(freshCourse.getDate() - 10);
@@ -26,6 +24,7 @@ export class CourseService {
       {
         id: '1',
         title: 'Angular Course',
+        authors: 'Mark Hamlinton',
         duration: '45',
         createdDate: freshCourse.toDateString(),
         topRated: true,
@@ -35,6 +34,7 @@ export class CourseService {
       {
         id: '2',
         title: 'React Course',
+        authors: 'Ben Strokes',
         duration: '60',
         createdDate: new Date(2020, 0, 10).toDateString(),
         description:
@@ -43,6 +43,7 @@ export class CourseService {
       {
         id: '3',
         title: 'Android Course',
+        authors: 'Virat Kholi',
         duration: '120',
         createdDate: upComingCourse.toDateString(),
         description:
@@ -51,6 +52,7 @@ export class CourseService {
       {
         id: '4',
         title: 'IOS Course',
+        authors: 'MS Dhoni',
         duration: '150',
         createdDate: new Date(2019, 12, 30).toDateString(),
         description:
@@ -59,6 +61,7 @@ export class CourseService {
       {
         id: '5',
         title: 'Web Basics Course',
+        authors: 'Rohit Sharma',
         duration: '20',
         createdDate: new Date(2020, 4, 25).toDateString(),
         description:
@@ -69,12 +72,14 @@ export class CourseService {
   getList() {
     return this.courses;
   }
+
   createCourse(
     title: string,
     createdDate: string,
     duration: string,
     description: string,
-    topRated: boolean
+    topRated: boolean,
+    authors: string
   ) {
     this.courses.push({
       id: String(this.id),
@@ -83,6 +88,7 @@ export class CourseService {
       duration,
       description,
       topRated,
+      authors,
     });
   }
   getItemById(id) {
@@ -99,13 +105,5 @@ export class CourseService {
     if (index > -1) {
       this.courses.splice(index, 1);
     }
-  }
-
-  isAddCourseView() {
-    return this.isAddCourse;
-  }
-
-  setCourseView(status: boolean) {
-    this.isAddCourse = status;
   }
 }

@@ -5,6 +5,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { Course } from '../shared/course/course';
 
@@ -17,9 +18,8 @@ export class CoursesComponent implements OnInit {
   courses: Course[];
   orderBy = false;
   filterCourseStr: string;
-  @Output() isAddCourseView = new EventEmitter<boolean>();
 
-  constructor(private courseService: CourseService) {}
+  constructor(private courseService: CourseService, private router: Router) {}
 
   ngOnInit(): void {
     this.courses = this.courseService.getList();
@@ -45,6 +45,6 @@ export class CoursesComponent implements OnInit {
   }
 
   onAddCourse() {
-    this.isAddCourseView.emit(true);
+    this.router.navigate(['courses/new']);
   }
 }
