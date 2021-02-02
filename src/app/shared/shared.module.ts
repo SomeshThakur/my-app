@@ -7,7 +7,8 @@ import { DurationPipe } from './duration.pipe';
 import { OrderByPipe } from './order-by.pipe';
 import { FilterPipe } from './filter.pipe';
 import { LoginComponent } from './login/login.component';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 const components = [
   HeaderComponent,
@@ -23,6 +24,7 @@ const components = [
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SharedModule {}

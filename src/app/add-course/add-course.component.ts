@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
+import { Author } from '../shared/course/author';
 import { Course } from '../shared/course/course';
 
 @Component({
@@ -26,16 +27,21 @@ export class AddCourseComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.isEditView = !!params.id;
-      this.setCourseDetails(this.courseService.getItemById(params.id));
+      this.courseService
+        .getItemById(params.id)
+        .subscribe((course: Course) => this.setCourseDetails(course));
     });
   }
 
   setCourseDetails(course: Course) {
-    this.title = course.title;
+    this.title = course.name;
     this.desc = course.description;
-    this.duration = course.duration;
+    this.duration = course.length;
     this.date = new Date(course.createdDate);
-    this.authors = course.authors;
+    this.authors = course.authors.reduce(
+      (prev, curr) => `${prev ? prev + ',' : prev} ${curr.name}`,
+      ''
+    );
     this.id = course.id;
   }
 
@@ -46,22 +52,25 @@ export class AddCourseComponent implements OnInit {
   add() {
     const course: Course = {
       id: this.id,
-      title: this.title,
+      name: this.title,
       createdDate: this.date,
-      duration: this.duration,
+      length: this.duration,
       description: this.desc,
-      topRated: false,
-      authors: this.authors,
+      isTopRated: false,
+      authors: this.authors.split(',').map((item: any) => ({
+        name: item,
+        id: item.id,
+      })),
     };
     if (this.isEditView) {
       this.courseService.updateItem(this.id, course);
     } else {
       this.courseService.createCourse(
-        course.title,
+        course.name,
         course.createdDate,
-        course.duration,
+        course.length,
         course.description,
-        course.topRated,
+        course.isTopRated,
         course.authors
       );
     }

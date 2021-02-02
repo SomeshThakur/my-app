@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  OnChanges,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { Course } from '../shared/course/course';
@@ -15,18 +9,24 @@ import { Course } from '../shared/course/course';
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
-  courses: Course[];
+  courses: Course[] = [];
   orderBy = false;
   filterCourseStr: string;
+  start = 0;
+  count = 10;
 
   constructor(private courseService: CourseService, private router: Router) {}
 
   ngOnInit(): void {
-    this.courses = this.courseService.getList();
+    this.courseService
+      .getList(this.start, this.count)
+      .subscribe((list: any) => (this.courses = list));
   }
 
   loadMore() {
-    console.log('Load More');
+    this.courseService
+      .getList(++this.start, this.count)
+      .subscribe((list: any) => (this.courses = this.courses.concat(list)));
   }
 
   onCourseDelete(id) {
@@ -34,7 +34,12 @@ export class CoursesComponent implements OnInit {
       'Do you really want to delete the course?'
     );
     if (confirmDelete) {
-      this.courseService.removeItem(id);
+      this.courseService.removeItem(id).subscribe(() => {
+        this.start = 0;
+        this.courseService
+          .getList(this.start, this.count)
+          .subscribe((list: Course[]) => (this.courses = list));
+      });
     }
   }
   toggleOrderBy() {

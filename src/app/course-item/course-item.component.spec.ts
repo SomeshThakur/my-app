@@ -26,10 +26,10 @@ describe('CourseItemComponent', () => {
   it('should emit the delete event', () => {
     const course: Course = {
       id: '123',
-      title: '',
+      name: '',
       createdDate: '',
       description: '',
-      duration: '',
+      length: '',
     };
     // Input value
     component.course = course;

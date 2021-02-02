@@ -1,12 +1,12 @@
 <div class="course-details">
   <div class="course-meta-data">
     <h3 class="title">
-      {{ course?.title | uppercase }}
+      {{ course?.name | uppercase }}
     </h3>
-    <img src="assets/star.png" class="topRated" *ngIf="course?.topRated" />
+    <img src="assets/star.png" class="topRated" *ngIf="course?.isTopRated" />
     <div class="right-align">
       <div class="duration">
-        {{ course?.duration | duration }}
+        {{ course?.length | duration }}
       </div>
       <div class="date">
         {{ course?.createdDate | date }}

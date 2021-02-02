@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,13 +9,18 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   isAuthenticated = false;
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.isAuthenticated = this.authService.isAuthenticated();
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        this.isAuthenticated = this.authService.isAuthenticated();
+      }
+    });
   }
+
   logout() {
     this.authService.logout();
-    location.reload();
+    this.router.navigate(['login']);
   }
 }

@@ -1,23 +1,28 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { BASE } from './utils';
 
-const KEY = 'userinfo';
+export const KEY = 'token';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  login(userName, password) {
-    localStorage.setItem(KEY, JSON.stringify({ userName, password }));
-    console.log('User logged in successfully!');
+  login(username, password) {
+    return this.http.post(`${BASE}/auth/login`, { login: username, password });
   }
+
   logout() {
     localStorage.removeItem(KEY);
   }
-  isAuthenticated() {
-    return !!localStorage.getItem(KEY);
-  }
-  getUserInfo() {
+
+  getToken(): string {
     return localStorage.getItem(KEY);
+  }
+
+  isAuthenticated() {
+    return !!this.getToken();
   }
 }
